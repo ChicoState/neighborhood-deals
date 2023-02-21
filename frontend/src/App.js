@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+//import { navigationContainer} from '@react-navigation/native'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './screens/Homescreen.js';
+import Posting from './screens/Postings.js';
+import React from 'react';
+//import {Text} from 'react-native'
+import { View, Text} from 'react-native';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+
+
+const stack = createStackNavigator(); 
+
+// function HomeNav(){
+//   return(
+//     <stack.Navigator>
+//       <stack.Screen name = "Home" component={HomeScreen}/>
+//       <stack.Screen name = "listings" component={Postings}/>
+//     </stack.Navigator>
+//   )
+// }
+
+const App = () =>{
+  return(
+    <NavigationContainer>
+    <stack.Navigator>
+      <stack.Screen name = "Homescreen" component = {HomeScreen} />
+      <stack.Screen name = "listings" component = {Posting} />
+    </stack.Navigator>
+    </NavigationContainer>
   );
 }
 
 export default App;
+
