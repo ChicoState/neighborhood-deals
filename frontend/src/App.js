@@ -46,12 +46,6 @@ const App = () =>{
           <Route path='/' />
         </Routes>
       </Router>
-      <NavigationContainer>
-      <stack.Navigator>
-        <stack.Screen name = "Homescreen" component = {HomeScreen} />
-        <stack.Screen name = "listings" component = {Posting} />
-      </stack.Navigator>
-      </NavigationContainer>
     </>
   );
 }
