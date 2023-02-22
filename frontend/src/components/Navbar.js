@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SidebarData } from './SidebarData'
 import './Navbar.css';
 import { IconContext } from 'react-icons'
@@ -9,7 +9,7 @@ import { IconContext } from 'react-icons'
 function Navbar(){
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar); //toggle
-
+  let navigate = useNavigate();
   return(
     <>
     <IconContext.Provider value = {{color: '#fff'}}>
