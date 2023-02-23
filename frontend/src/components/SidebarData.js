@@ -2,6 +2,8 @@ import React from 'react'
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
+import HomeScreen from '../screens/Homescreen';
+import Posting from '../screens/Postings';
 
 export const SidebarData = [
   {
