@@ -10,6 +10,11 @@ function Navbar(){
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar); //toggle
   let navigate = useNavigate();
+  // const itemClick = () => {
+  //   showSidebar; 
+  //   navigate(item.path);
+  // };
+
   return(
     <>
     <IconContext.Provider value = {{color: '#fff'}}>
@@ -19,26 +24,29 @@ function Navbar(){
         </Link>
       </div>
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}> //turnary if clicked sidebar
-        <ul className='nav-menu-items' onClick={showSidebar}>
+        {/* <ul className='nav-menu-items' onPress={navigate}> */}
+        <ul className='nav-menu-items'>
           <li className='navbar-toggle'>
             <Link to='#' className='menu-bars'>
-              <AiIcons.AiOutlineClose />
+              <AiIcons.AiOutlineClose onClick = {showSidebar}/>
             </Link>
           </li>
           {SidebarData.map((item, index) => {
               return (
-              <li key={index} className={item.cName}>
-                <Link to={item.path}>
-                  {item.icon}
-                  <span>{item.title}</span>
-                </Link>
-              </li>
+                <li key={index} 
+                className={item.cName}
+                >
+                  <Link to={item.path}>
+                    {item.icon}
+                    <span>{item.title}</span>
+                  </Link> 
+                </li>
               );
             }
           )}
         </ul>
       </nav>
-    </IconContext.Provider>
+    </IconContext.Provider>s
     </>
   );
 }
