@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from Ndeals import views as Ndeals
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('all_posts/', Ndeals.GetEverything),
+    path('user_posts/', Ndeals.UserPosts),
+    path('create_user/', Ndeals.SaveUser),
+    path('create_post/', Ndeals.SavePost),
+
 ]
