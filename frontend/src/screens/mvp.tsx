@@ -14,9 +14,12 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Card} from 'react-native-paper';
 import {FAB} from '@rneui/themed';
+import ActionButton from 'react-native-action-button';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {LogBox} from 'react-native';
+
 function MVP(): JSX.Element {
   const navigation = useNavigation();
-
   const [myData, setData] = useState({details: []});
   useEffect(() => {
     axios
@@ -31,16 +34,26 @@ function MVP(): JSX.Element {
   }, []);
   console.log(myData);
 
+  useEffect(() => {
+    LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
+  }, []);
+
   const fakeData = [
     {id: 1, title: 'this is', description: 'fake data'},
     {id: 2, title: 'this is', description: 'fake data'},
     {id: 3, title: 'this is', description: 'fake data'},
   ];
 
-  //   function showFakeData({fakeData})
-
   return (
     <SafeAreaView style={styles.container}>
+      <ActionButton buttonColor="rgba(231,76,60,1)" zIndex={1}>
+        <ActionButton.Item
+          buttonColor="#9b59b6"
+          title="New post"
+          onPress={() => navigation.navigate('post' as never)}>
+          <Icon name="ios-create" style={styles.actionButtonIcon} />
+        </ActionButton.Item>
+      </ActionButton>
       <ScrollView style={styles.scroll}>
         <Text style={styles.testText}>welcome to neighborhood deals</Text>
 
@@ -79,19 +92,42 @@ function MVP(): JSX.Element {
           <Text>this will be a decription eventually</Text>
           <Text>this will be an image</Text>
         </Card>
+        <Card style={styles.card}>
+          <Card.Title title="fake data 3" />
+          <Text>this will be a decription eventually</Text>
+          <Text>this will be an image</Text>
+        </Card>
+
+        <Card style={styles.card}>
+          <Card.Title title="fake data 4" />
+          <Text>this will be a decription eventually</Text>
+          <Text>this will be an image</Text>
+        </Card>
+
+        <Card style={styles.card}>
+          <Card.Title title="fake data 5" />
+          <Text>this will be a decription eventually</Text>
+          <Text>this will be an image</Text>
+        </Card>
+
+        <Card style={styles.card}>
+          <Card.Title title="fake data 6" />
+          <Text>this will be a decription eventually</Text>
+          <Text>this will be an image</Text>
+        </Card>
 
         <Button title="grab some data" onPress={() => console.log(myData)} />
         <Button
           title="display the data"
           onPress={() => console.log('figure out how to display on page')}
-          // onPress = {()=>console.log("nothing to see here")}
+          //  onPress = {()=>console.log("nothing to see here")}
         />
-        <FAB //we can make this one a plus that follows as you scroll
+        {/* <FAB //we can make this one a plus that follows as you scroll
           icon={{name: 'add', color: 'white'}}
-          color="green"
+          color="yellow"
           onPress={() => navigation.navigate('post' as never)}
           placement="right"
-        />
+        /> */}
         {/* <FAB
           visible={visible}
           onPress={() => setVisible(!visible)}
@@ -127,6 +163,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 10,
     right: 10,
+  },
+  actionButtonIcon: {
+    fontSize: 20,
+    height: 22,
+    color: 'white',
   },
 });
 
