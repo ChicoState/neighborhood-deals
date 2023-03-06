@@ -38,11 +38,11 @@ function MVP(): JSX.Element {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
   }, []);
 
-  const fakeData = [
-    {id: 1, title: 'this is', description: 'fake data'},
-    {id: 2, title: 'this is', description: 'fake data'},
-    {id: 3, title: 'this is', description: 'fake data'},
-  ];
+  // const fakeData = [
+  //   {id: 1, title: 'this is', description: 'fake data'},
+  //   {id: 2, title: 'this is', description: 'fake data'},
+  //   {id: 3, title: 'this is', description: 'fake data'},
+  // ];
 
   return (
     <SafeAreaView style={styles.container}>
@@ -55,12 +55,12 @@ function MVP(): JSX.Element {
         </ActionButton.Item>
       </ActionButton>
       <ScrollView style={styles.scroll}>
-        <Text style={styles.testText}>welcome to neighborhood deals</Text>
+        {/* <Text style={styles.testText}>welcome to neighborhood deals</Text> */}
 
         <Card style={styles.card}>
-          <Card.Title title="fake data 1" />
-          <Text>this will be a decription eventually</Text>
-          <Text>this will be an image</Text>
+          <Card.Title title="Location" />
+          <Text>description</Text>
+          <Text>image</Text>
         </Card>
 
         <Card style={styles.card}>
@@ -115,13 +115,13 @@ function MVP(): JSX.Element {
           <Text>this will be a decription eventually</Text>
           <Text>this will be an image</Text>
         </Card>
-
+        {/* 
         <Button title="grab some data" onPress={() => console.log(myData)} />
         <Button
           title="display the data"
           onPress={() => console.log('figure out how to display on page')}
           //  onPress = {()=>console.log("nothing to see here")}
-        />
+        /> */}
         {/* <FAB //we can make this one a plus that follows as you scroll
           icon={{name: 'add', color: 'white'}}
           color="yellow"
