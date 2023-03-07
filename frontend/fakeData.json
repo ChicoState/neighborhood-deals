@@ -1,0 +1,24 @@
+{
+    "posts": [
+        {
+            "id": 1, 
+            "name": "humfrey leSchutes",
+            "location": "666 hotpot way, Chico CA, 95926",
+            "desc": "merny! I GIB IT TO U!"
+        },
+
+        {
+            "id": 2,
+            "name": "kermit Donhoongler",
+            "location": "1234 yellow Ave., Chico CA, 95926",
+            "desc": "We got the meats"
+        },
+
+        {
+            "id": 3,
+            "name": "christoferson marygal",
+            "location": "1550 west Sacramento Ave., Chico CA, 95926",
+            "desc": "If you ain't first you're last!"
+        }
+    ]
+}
