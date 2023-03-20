@@ -26,7 +26,11 @@ function DisplayData(): JSX.Element {
       {post.map((item, key) => {
         return (
           <Card key={key} style={styles.card}>
-            <Card.Title title={item.location} />
+            <Card.Title
+              title={item.location}
+              // titleStyle={styles.title}
+              titleNumberOfLines={3}
+            />
             <Text>{item.desc}</Text>
             <Text>author: {item.name}</Text>
           </Card>
@@ -42,5 +46,9 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 5,
   },
+  // title: {
+  //   flexDirection: 'row',
+  //   flexWrap: 'wrap',
+  // },
 });
 export default DisplayData;
