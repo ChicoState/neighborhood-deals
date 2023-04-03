@@ -24,5 +24,6 @@ urlpatterns = [
     path('user_posts/', Ndeals.UserPosts),
     path('create_user/', Ndeals.SaveUser),
     path('create_post/', Ndeals.SavePost),
+    path('api/endpoint', handle_name_description, name = 'handle-name-description')
 
 ]
