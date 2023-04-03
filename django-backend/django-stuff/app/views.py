@@ -1,4 +1,4 @@
-from django.shortcuts import render, response
+from django.shortcuts import render, HttpResponse
 
 
 #functions not flushed out and neither are models
@@ -19,8 +19,9 @@ def SaveUser(request):
 
 # This takes the users post info and saves it to the database
 def SavePost(request):
-    data = request.content
-    post_model.save(data.blah, data.blah, data.blah)
+    if request.method == 'POST':
+        data = request.content
+        post_model.save(data.blah, data.blah, data.blah)
     return response({"result":"success"})
 
 # This will return all the posts for a specific user

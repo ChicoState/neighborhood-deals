@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class NdealsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'Ndeals'
+    name = 'app'
