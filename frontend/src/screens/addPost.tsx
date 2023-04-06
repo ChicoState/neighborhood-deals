@@ -1,11 +1,27 @@
 import React from 'react';
 import {View, TextInput, Button, StyleSheet} from 'react-native';
 import {useState} from 'react';
+import axios from 'axios';
 
 function Post(): JSX.Element {
   const [firstName, onfirstChange] = useState('');
   const [lastName, onlastChange] = useState('');
   const [description, descChange] = useState('');
+
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/post/', {
+        //create path('api/endpiont,...') in backend
+        first_name: firstName,
+        last_name: lastName,
+        description: description,
+      });
+
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <View>
@@ -36,7 +52,8 @@ function Post(): JSX.Element {
 
       <Button
         title="submit post"
-        onPress={() => console.log('nothing happens!')}
+        // onPress={() => console.log('nothing happens!')}
+        onPress={handleSubmit}
       />
     </View>
   );
