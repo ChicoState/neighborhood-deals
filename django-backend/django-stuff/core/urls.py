@@ -21,13 +21,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-
+    path('api/', include('app.api.urls')),
     path('Ndeals/', include('app.urls')),
+    # path('', include())
 
     # path('all_posts/', app.GetEverything),
     # path('user_posts/', app.UserPosts),
@@ -36,4 +34,5 @@ urlpatterns = [
 
 ]
 if settings.DEBUG:
-        urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

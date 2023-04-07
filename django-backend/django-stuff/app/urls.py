@@ -3,6 +3,6 @@ from .views import *
 
 urlpatterns = [
     path('', GetEverything),
-    path('/post', SavePost)
+    path('post/', SavePost)
 
 ]
