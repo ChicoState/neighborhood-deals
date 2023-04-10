@@ -27,26 +27,25 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import {NavigationContainer} from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {createStackNavigator} from '@react-navigation/stack';
 // import MVP from './src/screens/mvp.tsx';
 import MVP from './src/screens/mvp';
 import Post from './src/screens/addPost';
+import Map from './src/screens/map';
 import axios from 'axios';
 
 const stack = createStackNavigator();
 
 function App(): JSX.Element {
-
-
-    return(
-      <NavigationContainer>
-
-            <stack.Navigator>
-                <stack.Screen name='home' component={MVP}/>
-                <stack.Screen name ='post' component={Post}/>
-            </stack.Navigator>
-      </NavigationContainer>
-    );
+  return (
+    <NavigationContainer>
+      <stack.Navigator>
+        <stack.Screen name="home" component={MVP} />
+        <stack.Screen name="post" component={Post} />
+        <stack.Screen name="Map" component={Map} />
+      </stack.Navigator>
+    </NavigationContainer>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -72,9 +71,8 @@ const styles = StyleSheet.create({
     opacity: 10,
     paddingHorizontal: 24,
     marginTop: 32,
-    alignItems: 'center'
-
-  }
+    alignItems: 'center',
+  },
 });
 
 export default App;

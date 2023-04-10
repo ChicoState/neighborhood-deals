@@ -4,17 +4,22 @@ import {useState} from 'react';
 import axios from 'axios';
 
 function Post(): JSX.Element {
-  const [firstName, onfirstChange] = useState('');
-  const [lastName, onlastChange] = useState('');
+  const [Name, onNameChange] = useState('');
+  const [Title, onTitleChange] = useState('');
   const [description, descChange] = useState('');
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post('http://127.0.0.1:8000/post/', {
+      const response = await axios.post('http://localhost:8000/api/posts/', {
         //create path('api/endpiont,...') in backend
-        first_name: firstName,
-        last_name: lastName,
+        name: Name,
+        title: Title,
         description: description,
+        // s_date: '0',
+        // e_date: '0',
+        // s_time: '0',
+        // e_time: '0',
+        user: 1,
       });
 
       console.log(response.data);
@@ -27,16 +32,16 @@ function Post(): JSX.Element {
     <View>
       <TextInput
         style={styles.textStyle}
-        onChangeText={onfirstChange}
-        value={firstName}
-        placeholder="First Name"
+        onChangeText={onNameChange}
+        value={Name}
+        placeholder="full name"
       />
 
       <TextInput
         style={styles.textStyle}
-        onChangeText={onlastChange}
-        value={lastName}
-        placeholder="last Name"
+        onChangeText={onTitleChange}
+        value={Title}
+        placeholder="location"
       />
 
       <TextInput
