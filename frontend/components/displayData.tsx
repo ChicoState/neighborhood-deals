@@ -15,12 +15,12 @@ function DisplayData(): JSX.Element {
         setData({details: res.data});
       })
       .catch(err => {
-        console.log('no data');
+        console.log(err);
       });
     //console.log(myData);
   }, []);
-  console.log(myData);
-  console.log(data);
+  // console.log(myData);
+  // console.log(data);
   return (
     <>
       {post.map((item, key) => {
@@ -31,8 +31,14 @@ function DisplayData(): JSX.Element {
               // titleStyle={styles.title}
               titleNumberOfLines={3}
             />
-            <Text>{item.description}</Text>
-            <Text>author: {item.user}</Text>
+            {/* <Text>
+              {item.sdate} "-" {item.edate}
+            </Text>
+            <Text>
+              {item.stime} "-" {item.etime}
+            </Text> */}
+            <Text style={{paddingBottom: 10}}>{item.description}</Text>
+            <Text>-{item.name}</Text>
           </Card>
         );
       })}

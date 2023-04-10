@@ -7,5 +7,11 @@ class postModelSerializer(serializers.ModelSerializer):
         model = postEntry
         # fields = {'id', 'title', 'description',
         #           'sdate', 'edate', 'stime', 'etime'}
-        # fields = "__all__"
-        fields = ("user", "title", "description")
+        fields = "__all__"
+
+        # fields = ("user", "name", "titles", "description")
+
+
+# class postCreationSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = postEntry
