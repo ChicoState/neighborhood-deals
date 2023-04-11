@@ -21,18 +21,51 @@ function Map(): JSX.Element {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <MapView
+          style={styles.mapStyle}
           initialRegion={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-        />
-        <Text>this will be a map lmao</Text>
+              latitude: 37.78825,
+              longitude: -122.4324,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}
+            />
       </ScrollView>
     </SafeAreaView>
   );
 }
+
+// <MapView
+//   initialRegion={{
+  //     latitude: 37.78825,
+  //     longitude: -122.4324,
+  //     latitudeDelta: 0.0922,
+  //     longitudeDelta: 0.0421,
+  //   }}
+  // />
+        // getInitialState(){
+        //   return {
+        //     region: {
+        //       latitude: 37.78825,
+        //       longitude: -122.4324,
+        //       latitudeDelta: 0.0922,
+        //       longitudeDelta: 0.0421,
+        //     },
+        //   };
+        // }
+        //
+        // onRegionChange(region) {
+        //   this.setState({ region });
+        // }
+        //
+        // render() {
+        //   return (
+        //     <MapView
+        //       region={this.state.region}
+        //       onRegionChange={this.onRegionChange}
+        //     />
+        //   );
+        // }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -43,6 +76,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     // backgroundColor: ''
   },
+  mapStyle:{
+    minHeight: "100%",
+    minWidth: "100%",
+  }
 });
 
 export default Map;
