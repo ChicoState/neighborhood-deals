@@ -14,15 +14,25 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from Ndeals import views as Ndeals
+from django.urls import path, include
+from app import views as app
+from django.urls.conf import include
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('all_posts/', Ndeals.GetEverything),
-    path('user_posts/', Ndeals.UserPosts),
-    path('create_user/', Ndeals.SaveUser),
-    path('create_post/', Ndeals.SavePost),
+    path('api/', include('app.api.urls')),
+    path('Ndeals/', include('app.urls')),
+    # path('', include())
+
+    # path('all_posts/', app.GetEverything),
+    # path('user_posts/', app.UserPosts),
+    # path('create_user/', app.SaveUser),
+    # path('create_post/', app.SavePost),
 
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

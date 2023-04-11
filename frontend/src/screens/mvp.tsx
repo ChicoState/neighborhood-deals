@@ -32,6 +32,12 @@ function MVP(): JSX.Element {
           onPress={() => navigation.navigate('post' as never)}>
           <Icon name="ios-create" style={styles.actionButtonIcon} />
         </ActionButton.Item>
+        <ActionButton.Item
+          buttonColor="#9b59b6"
+          title="view map"
+          onPress={() => navigation.navigate('Map' as never)}>
+          <Icon name="map" style={styles.actionButtonIcon} />
+        </ActionButton.Item>
       </ActionButton>
       <ScrollView style={styles.scroll}>
         <DisplayData></DisplayData>

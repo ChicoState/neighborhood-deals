@@ -6,33 +6,39 @@ import axios from 'axios';
 import {useState, useEffect} from 'react';
 
 function DisplayData(): JSX.Element {
-  const [myData, setData] = useState({details: []});
-  let post = data.posts;
+  const [myData, setData] = useState({details: [{}]});
+  let post = myData.details;
   useEffect(() => {
     axios
-      .get('https://jsonplaceholder.typicode.com/todos/1')
+      .get('http://127.0.0.1:8000/api/posts/')
       .then(res => {
         setData({details: res.data});
       })
       .catch(err => {
-        console.log('no data');
+        console.log(err);
       });
     //console.log(myData);
   }, []);
-  console.log(myData);
-
+  // console.log(myData);
+  // console.log(data);
   return (
     <>
       {post.map((item, key) => {
         return (
           <Card key={key} style={styles.card}>
             <Card.Title
-              title={item.location}
+              title={item.title}
               // titleStyle={styles.title}
               titleNumberOfLines={3}
             />
-            <Text>{item.desc}</Text>
-            <Text>author: {item.name}</Text>
+            {/* <Text>
+              {item.sdate} "-" {item.edate}
+            </Text>
+            <Text>
+              {item.stime} "-" {item.etime}
+            </Text> */}
+            <Text style={{paddingBottom: 10}}>{item.description}</Text>
+            <Text>-{item.name}</Text>
           </Card>
         );
       })}
