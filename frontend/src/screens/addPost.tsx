@@ -2,12 +2,13 @@ import React from 'react';
 import {View, TextInput, Button, StyleSheet} from 'react-native';
 import {useState} from 'react';
 import axios from 'axios';
+import {useNavigation} from '@react-navigation/native';
 
 function Post(): JSX.Element {
   const [Name, onNameChange] = useState('');
   const [Title, onTitleChange] = useState('');
   const [description, descChange] = useState('');
-
+  const navigation = useNavigation();
   const handleSubmit = async () => {
     try {
       const response = await axios.post('http://localhost:8000/api/posts/', {
@@ -26,6 +27,7 @@ function Post(): JSX.Element {
     } catch (error) {
       console.error(error);
     }
+    navigation.navigate('home' as never);
   };
 
   return (
