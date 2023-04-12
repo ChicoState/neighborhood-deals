@@ -16,6 +16,7 @@ yarn-debug.log*
 yarn-error.log*
 /.changelog
 .npm/
+django-backend/django-stuff/app/migrations
 # Created by https://www.gitignore.io
 
 ### OSX ###
