@@ -6,6 +6,7 @@ import axios from 'axios';
 import {useState, useEffect} from 'react';
 
 function DisplayData(): JSX.Element {
+  const [seconds, setSeconds] = useState(0);
   const [myData, setData] = useState({details: [{}]});
   let post = myData.details;
   useEffect(() => {
@@ -17,8 +18,23 @@ function DisplayData(): JSX.Element {
       .catch(err => {
         console.log(err);
       });
+
+    const interval = setInterval(() => {
+      setSeconds(seconds + 1);
+
+      axios
+        .get('http://127.0.0.1:8000/api/posts/')
+        .then(res => {
+          setData({details: res.data});
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }, 3000);
+
+    return () => clearInterval(interval);
     //console.log(myData);
-  }, []);
+  }, [seconds]);
   // console.log(myData);
   // console.log(data);
   return (
