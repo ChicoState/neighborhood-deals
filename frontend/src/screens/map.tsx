@@ -15,6 +15,7 @@ import {useNavigation} from '@react-navigation/native';
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MapView from 'react-native-maps';
+import {Marker} from 'react-native-maps';
 
 function Map(): JSX.Element {
   return (
@@ -66,6 +67,21 @@ function Map(): JSX.Element {
         //   );
         // }
 
+
+        /* Going to save a list of values that will be read in and accessed
+           Using this format and access variables
+        */
+
+        // <MapView region={this.state.region} onRegionChange={this.onRegionChange}>
+        //   {this.state.markers.map((marker, index) => (
+        //     <Marker
+        //       key={index}
+        //       coordinate={marker.latlng}
+        //       title={marker.title}
+        //       description={marker.description}
+        //     />
+        //   ))}
+        // </MapView>;
 
 const styles = StyleSheet.create({
   container: {
