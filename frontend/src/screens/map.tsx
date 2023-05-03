@@ -31,15 +31,15 @@ function Map(): JSX.Element {
             }}
             />
 
-        <MapView region={this.state.region} onRegionChange={this.onRegionChange}>
-          {this.state.markers.map((marker, index) => (
-            <Marker
-              key={index}
-              coordinate={marker.latlng}
-              title={marker.title}
-              description={marker.description}
-              />
-            ))}
+        // <MapView region={this.state.region} onRegionChange={this.onRegionChange}>
+        //   {this.state.markers.map((marker, index) => (
+        //     <Marker
+        //       key={index}
+        //       coordinate={marker.latlng}
+        //       title={marker.title}
+        //       description={marker.description}
+        //       />
+        //     ))}
         </MapView>;
       </ScrollView>
     </SafeAreaView>
