@@ -30,21 +30,116 @@ function Map(): JSX.Element {
               longitudeDelta: 0.0421,
             }}
             />
-
-        // <MapView region={this.state.region} onRegionChange={this.onRegionChange}>
-        //   {this.state.markers.map((marker, index) => (
-        //     <Marker
-        //       key={index}
-        //       coordinate={marker.latlng}
-        //       title={marker.title}
-        //       description={marker.description}
-        //       />
-        //     ))}
-        </MapView>;
+          <Marker draggable
+            coordinate={this.state.x}
+            onDragEnd={(e) => this.setState({ x: e.nativeEvent.coordinate })}
+            />
+        </MapView>
       </ScrollView>
     </SafeAreaView>
   );
 }
+
+// <MapView region={this.state.region} onRegionChange={this.onRegionChange}>
+//   {this.state.markers.map((marker, index) => (
+//     <Marker
+//       key={index}
+//       coordinate={marker.latlng}
+//       title={marker.title}
+//       description={marker.description}
+//     />
+//   ))}
+// </MapView>;
+
+// class DefaultMarkers extends React.Component<any, any> {
+//   constructor(props: any) {
+//     super(props);
+//
+//     this.state = {
+//       region: {
+//         latitude: LATITUDE,
+//         longitude: LONGITUDE,
+//         latitudeDelta: LATITUDE_DELTA,
+//         longitudeDelta: LONGITUDE_DELTA,
+//       },
+//       markers: [],
+//     };
+//   }
+//
+//   onMapPress(e: any) {
+//     this.setState({
+//       markers: [
+//         ...this.state.markers,
+//         {
+//           coordinate: e.nativeEvent.coordinate,
+//           key: id++,
+//           color: randomColor(),
+//         },
+//       ],
+//     });
+//   }
+//
+//   render() {
+//     return (
+//       <View style={styles.container}>
+//         <MapView
+//           provider={this.props.provider}
+//           style={styles.map}
+//           initialRegion={this.state.region}
+//           onPress={e => this.onMapPress(e)}>
+//           {this.state.markers.map((marker: any) => (
+//             <Marker
+//               key={marker.key}
+//               coordinate={marker.coordinate}
+//               pinColor={marker.color}
+//             />
+//           ))}
+//         </MapView>
+//         <View style={styles.buttonContainer}>
+//           <TouchableOpacity
+//             onPress={() => this.setState({markers: []})}
+//             style={styles.bubble}>
+//             <Text>Tap map to create a marker of random color</Text>
+//           </TouchableOpacity>
+//         </View>
+//       </View>
+//     );
+//   }
+// }
+//
+// const styles = StyleSheet.create({
+//   container: {
+//     ...StyleSheet.absoluteFillObject,
+//     justifyContent: 'flex-end',
+//     alignItems: 'center',
+//   },
+//   map: {
+//     ...StyleSheet.absoluteFillObject,
+//   },
+//   bubble: {
+//     backgroundColor: 'rgba(255,255,255,0.7)',
+//     paddingHorizontal: 18,
+//     paddingVertical: 12,
+//     borderRadius: 20,
+//   },
+//   latlng: {
+//     width: 200,
+//     alignItems: 'stretch',
+//   },
+//   button: {
+//     width: 80,
+//     paddingHorizontal: 12,
+//     alignItems: 'center',
+//     marginHorizontal: 10,
+//   },
+//   buttonContainer: {
+//     flexDirection: 'row',
+//     marginVertical: 20,
+//     backgroundColor: 'transparent',
+//   },
+// });
+//
+// export default DefaultMarkers;
 
 // <MapView
 //   initialRegion={{
