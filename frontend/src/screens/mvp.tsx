@@ -40,7 +40,7 @@ function MVP(): JSX.Element {
         </ActionButton.Item>
       </ActionButton>
       <ScrollView style={styles.scroll}>
-        <DisplayData></DisplayData>
+        <DisplayData />
       </ScrollView>
     </SafeAreaView>
   );
