@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  Text,
-  SafeAreaView,
-  ScrollView,
-  Button,
-  StyleSheet,
-  StatusBar,
-  View,
-  TextBase,
-} from 'react-native';
+import {SafeAreaView, ScrollView, StyleSheet, StatusBar} from 'react-native';
 import {useEffect} from 'react';
 import {LogBox} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
@@ -53,14 +44,12 @@ const styles = StyleSheet.create({
   },
   scroll: {
     marginHorizontal: 5,
-    // backgroundColor: ''
   },
   testText: {
     fontSize: 10,
   },
   card: {
-    // alignItems: 'center',
-    backgroundColor: `#fff8dc`,
+    backgroundColor: '#fff8dc',
     padding: 10,
     margin: 5,
   },

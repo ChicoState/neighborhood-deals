@@ -19,41 +19,13 @@ function DisplayData(): JSX.Element {
       .catch(err => {
         console.log(err);
       });
-
-    const interval = setInterval(() => {
-      setSeconds(seconds + 1);
-
-      axios
-        .get('http://127.0.0.1:8000/api/posts/')
-        .then(res => {
-          setData({details: res.data});
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }, 3000);
-
-    return () => clearInterval(interval);
-    //console.log(myData);
-  }, [seconds]);
-  // console.log(myData);
-  // console.log(data);
+    
   return (
     <>
       {post.map((item, key) => {
         return (
           <Card key={key} style={styles.card}>
-            <Card.Title
-              title={item.title}
-              // titleStyle={styles.title}
-              titleNumberOfLines={3}
-            />
-            {/* <Text>
-              {item.sdate} "-" {item.edate}
-            </Text>
-            <Text>
-              {item.stime} "-" {item.etime}
-            </Text> */}
+            <Card.Title title={item.title} titleNumberOfLines={3} />
             <Text style={{paddingBottom: 10}}>{item.description}</Text>
             <Text>-{item.name}</Text>
           </Card>
