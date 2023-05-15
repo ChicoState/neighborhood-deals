@@ -15,10 +15,9 @@ class MigrationsViewTest(TestCase):
 
 
     def test_get_everything(self):
-        url = '/api/'  # Directly using the path as there's no name assigned
+        url = '/api/'  
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
 
     def test_save_post(self):
         url = '/api/posts/'  # Update this with your correct url
@@ -44,7 +43,7 @@ class PostViewSetTest(TestCase):
 
     def test_create_post(self):
         self.client.force_authenticate(user=self.test_user)
-        url = reverse('post-list')  # 'post-list' is the URL name for the viewset
+        url = reverse('post-list')  
         data = {
             "user": self.test_user.pk,
             "name": "test_user",
@@ -61,6 +60,24 @@ class PostViewSetTest(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['title'], "test_title")
+
+    def test_get_non_existent_post(self):
+        url = reverse('post-detail', kwargs={'pk': 9999})  # post doesn't exist
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_create_post_with_invalid_data(self):
+        self.client.force_authenticate(user=self.test_user)
+        url = reverse('post-list')  # 
+        # Pass in data that will make the serializer invalid.
+        data = {
+            "user": self.test_user.id,
+            "name": "test_user",
+            # "title": "test_title",
+            "description": "test_description",
+        }
+        response = self.client.post(url, data, content_type='application/json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_delete_post(self):
         post = postEntry.objects.create(user=self.test_user, name="test_user", title="test_title", description="test_description")
