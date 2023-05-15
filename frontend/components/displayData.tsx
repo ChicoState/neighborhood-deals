@@ -17,26 +17,14 @@ function DisplayData(): JSX.Element {
       .catch(err => {
         console.log(err);
       });
-    //console.log(myData);
   }, []);
-  // console.log(myData);
-  // console.log(data);
+
   return (
     <>
       {post.map((item, key) => {
         return (
           <Card key={key} style={styles.card}>
-            <Card.Title
-              title={item.title}
-              // titleStyle={styles.title}
-              titleNumberOfLines={3}
-            />
-            {/* <Text>
-              {item.sdate} "-" {item.edate}
-            </Text>
-            <Text>
-              {item.stime} "-" {item.etime}
-            </Text> */}
+            <Card.Title title={item.title} titleNumberOfLines={3} />
             <Text style={{paddingBottom: 10}}>{item.description}</Text>
             <Text>-{item.name}</Text>
           </Card>

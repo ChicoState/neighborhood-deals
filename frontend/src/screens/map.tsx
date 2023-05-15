@@ -8,6 +8,7 @@ import {
   StatusBar,
   View,
   TextBase,
+  InteractionManager,
 } from 'react-native';
 import {useEffect} from 'react';
 import {LogBox} from 'react-native';
@@ -16,24 +17,34 @@ import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MapView from 'react-native-maps';
 import {Marker} from 'react-native-maps';
+import {Title} from 'react-native-paper';
 
 function Map(): JSX.Element {
+  const tmpMarkers = {
+    0: {latitude: 39.7315, longitude: -121.85676},
+    1: {latitude: 39.724571, longitude: -121.84391},
+    2: {latitude: 39.71943, longitude: -121.8449},
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <MapView
           style={styles.mapStyle}
           initialRegion={{
-              latitude: 39.728493,
-              longitude: -121.837479,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
-            }}
-            />
-          <Marker draggable
+            latitude: 39.728493,
+            longitude: -121.837479,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}>
+          {/* <Marker
+            draggable
             coordinate={this.state.x}
-            onDragEnd={(e) => this.setState({ x: e.nativeEvent.coordinate })}
-            />
+            onDragEnd={e => this.setState({x: e.nativeEvent.coordinate})}
+          /> */}
+          <Marker coordinate={tmpMarkers[0]} title="this is a tests" />
+          <Marker coordinate={tmpMarkers[1]} />
+          <Marker coordinate={tmpMarkers[2]} />
         </MapView>
       </ScrollView>
     </SafeAreaView>
@@ -143,36 +154,35 @@ function Map(): JSX.Element {
 
 // <MapView
 //   initialRegion={{
-  //     latitude: 37.78825,
-  //     longitude: -122.4324,
-  //     latitudeDelta: 0.0922,
-  //     longitudeDelta: 0.0421,
-  //   }}
-  // />
-        // getInitialState(){
-        //   return {
-        //     region: {
-        //       latitude: 37.78825,
-        //       longitude: -122.4324,
-        //       latitudeDelta: 0.0922,
-        //       longitudeDelta: 0.0421,
-        //     },
-        //   };
-        // }
-        //
-        // onRegionChange(region) {
-        //   this.setState({ region });
-        // }
-        //
-        // render() {
-        //   return (
-        //     <MapView
-        //       region={this.state.region}
-        //       onRegionChange={this.onRegionChange}
-        //     />
-        //   );
-        // }
-
+//     latitude: 37.78825,
+//     longitude: -122.4324,
+//     latitudeDelta: 0.0922,
+//     longitudeDelta: 0.0421,
+//   }}
+// />
+// getInitialState(){
+//   return {
+//     region: {
+//       latitude: 37.78825,
+//       longitude: -122.4324,
+//       latitudeDelta: 0.0922,
+//       longitudeDelta: 0.0421,
+//     },
+//   };
+// }
+//
+// onRegionChange(region) {
+//   this.setState({ region });
+// }
+//
+// render() {
+//   return (
+//     <MapView
+//       region={this.state.region}
+//       onRegionChange={this.onRegionChange}
+//     />
+//   );
+// }
 
 const styles = StyleSheet.create({
   container: {
@@ -183,10 +193,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     // backgroundColor: ''
   },
-  mapStyle:{
-    minHeight: "100%",
-    minWidth: "100%",
-  }
+  mapStyle: {
+    minHeight: '100%',
+    minWidth: '100%',
+  },
 });
 
 export default Map;
