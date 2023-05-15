@@ -16,15 +16,9 @@ class postViewSet(viewsets.ModelViewSet):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        # # print(request.data)
-        # # json_obj = json.loads(request.data)\
-        # postEntry.objects.create(user=request.data.user)
+        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-        # post_data = JSONParser().parse(request.data)
-        # # print(post_data)
-        # post_serializer = serializers.postModelSerializer(data=post_data)
-        # if post_serializer.is_valid():
-        #     post_serializer.save()
-        #     return JsonResponse(post_serializer.data, status=status.HTTP_201_CREATED)
-        # return JsonResponse(post_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def destroy(self, request, *args, **kwargs):
+        post = self.get_object()
+        post.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

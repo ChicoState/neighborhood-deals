@@ -1,24 +1,25 @@
 import React from 'react';
 import {View, Button, StyleSheet} from 'react-native';
-import data from '../fakeData.json';
+// import data from '../fakeData.json';
 import {Card, Text} from 'react-native-paper';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 
 function DisplayData(): JSX.Element {
+  const [seconds, setSeconds] = useState(0);
   const [myData, setData] = useState({details: [{}]});
   let post = myData.details;
   useEffect(() => {
     axios
       .get('http://127.0.0.1:8000/api/posts/')
       .then(res => {
+        console.log(res.status);
         setData({details: res.data});
       })
       .catch(err => {
         console.log(err);
       });
-  }, []);
-
+    
   return (
     <>
       {post.map((item, key) => {

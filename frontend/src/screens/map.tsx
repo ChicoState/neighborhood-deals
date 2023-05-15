@@ -3,12 +3,7 @@ import {SafeAreaView, ScrollView, StyleSheet, StatusBar} from 'react-native';
 import MapView from 'react-native-maps';
 import {Marker} from 'react-native-maps';
 
-// function Modal(number) {}
 
-//39.723740, and the longitude is -121.834440. 1017 broadway st.
-//39.750840, -121.855150 102 cohasset road,
-//39.736480, -121.870110 1814 nord ave
-//39.724571, -121.843910, rileys
 function Map(): JSX.Element {
   const tmpMarkers = {
     0: {latitude: 39.72374, longitude: -121.83444}, //1017 broadway st
