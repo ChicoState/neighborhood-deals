@@ -1,29 +1,20 @@
 import React from 'react';
-import {
-  Text,
-  SafeAreaView,
-  ScrollView,
-  Button,
-  StyleSheet,
-  StatusBar,
-  View,
-  TextBase,
-  InteractionManager,
-} from 'react-native';
-import {useEffect} from 'react';
-import {LogBox} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import ActionButton from 'react-native-action-button';
-import Icon from 'react-native-vector-icons/Ionicons';
+import {SafeAreaView, ScrollView, StyleSheet, StatusBar} from 'react-native';
 import MapView from 'react-native-maps';
 import {Marker} from 'react-native-maps';
-import {Title} from 'react-native-paper';
 
+// function Modal(number) {}
+
+//39.723740, and the longitude is -121.834440. 1017 broadway st.
+//39.750840, -121.855150 102 cohasset road,
+//39.736480, -121.870110 1814 nord ave
+//39.724571, -121.843910, rileys
 function Map(): JSX.Element {
   const tmpMarkers = {
-    0: {latitude: 39.7315, longitude: -121.85676},
-    1: {latitude: 39.724571, longitude: -121.84391},
-    2: {latitude: 39.71943, longitude: -121.8449},
+    0: {latitude: 39.72374, longitude: -121.83444}, //1017 broadway st
+    1: {latitude: 39.724571, longitude: -121.84391}, //rileys
+    2: {latitude: 39.73648, longitude: -121.84391}, // 1814 nord ave
+    3: {latitude: 39.75084, longitude: -121.85515}, //102 cohasset Rd.
   };
 
   return (
@@ -37,152 +28,31 @@ function Map(): JSX.Element {
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}>
-          {/* <Marker
-            draggable
-            coordinate={this.state.x}
-            onDragEnd={e => this.setState({x: e.nativeEvent.coordinate})}
-          /> */}
-          <Marker coordinate={tmpMarkers[0]} title="this is a tests" />
-          <Marker coordinate={tmpMarkers[1]} />
-          <Marker coordinate={tmpMarkers[2]} />
+          <Marker
+            coordinate={tmpMarkers[0]}
+            title="Alexander McQueen"
+            description="look for the big red house! We have a variety of things!"
+          />
+          <Marker
+            coordinate={tmpMarkers[1]}
+            title="marilyn manson"
+            description="we have so much stuff to get rid of and so little time. please come and grab our goods"
+          />
+          <Marker
+            coordinate={tmpMarkers[2]}
+            title="guy fieri"
+            description="theres a bunch of stuff that needs to go!!! come and buy our goods"
+          />
+          <Marker
+            coordinate={tmpMarkers[3]}
+            title="DJ Bambo"
+            description="i have a bunch of old music stuff i need to get rid of! All prices are negotiable"
+          />
         </MapView>
       </ScrollView>
     </SafeAreaView>
   );
 }
-
-// <MapView region={this.state.region} onRegionChange={this.onRegionChange}>
-//   {this.state.markers.map((marker, index) => (
-//     <Marker
-//       key={index}
-//       coordinate={marker.latlng}
-//       title={marker.title}
-//       description={marker.description}
-//     />
-//   ))}
-// </MapView>;
-
-// class DefaultMarkers extends React.Component<any, any> {
-//   constructor(props: any) {
-//     super(props);
-//
-//     this.state = {
-//       region: {
-//         latitude: LATITUDE,
-//         longitude: LONGITUDE,
-//         latitudeDelta: LATITUDE_DELTA,
-//         longitudeDelta: LONGITUDE_DELTA,
-//       },
-//       markers: [],
-//     };
-//   }
-//
-//   onMapPress(e: any) {
-//     this.setState({
-//       markers: [
-//         ...this.state.markers,
-//         {
-//           coordinate: e.nativeEvent.coordinate,
-//           key: id++,
-//           color: randomColor(),
-//         },
-//       ],
-//     });
-//   }
-//
-//   render() {
-//     return (
-//       <View style={styles.container}>
-//         <MapView
-//           provider={this.props.provider}
-//           style={styles.map}
-//           initialRegion={this.state.region}
-//           onPress={e => this.onMapPress(e)}>
-//           {this.state.markers.map((marker: any) => (
-//             <Marker
-//               key={marker.key}
-//               coordinate={marker.coordinate}
-//               pinColor={marker.color}
-//             />
-//           ))}
-//         </MapView>
-//         <View style={styles.buttonContainer}>
-//           <TouchableOpacity
-//             onPress={() => this.setState({markers: []})}
-//             style={styles.bubble}>
-//             <Text>Tap map to create a marker of random color</Text>
-//           </TouchableOpacity>
-//         </View>
-//       </View>
-//     );
-//   }
-// }
-//
-// const styles = StyleSheet.create({
-//   container: {
-//     ...StyleSheet.absoluteFillObject,
-//     justifyContent: 'flex-end',
-//     alignItems: 'center',
-//   },
-//   map: {
-//     ...StyleSheet.absoluteFillObject,
-//   },
-//   bubble: {
-//     backgroundColor: 'rgba(255,255,255,0.7)',
-//     paddingHorizontal: 18,
-//     paddingVertical: 12,
-//     borderRadius: 20,
-//   },
-//   latlng: {
-//     width: 200,
-//     alignItems: 'stretch',
-//   },
-//   button: {
-//     width: 80,
-//     paddingHorizontal: 12,
-//     alignItems: 'center',
-//     marginHorizontal: 10,
-//   },
-//   buttonContainer: {
-//     flexDirection: 'row',
-//     marginVertical: 20,
-//     backgroundColor: 'transparent',
-//   },
-// });
-//
-// export default DefaultMarkers;
-
-// <MapView
-//   initialRegion={{
-//     latitude: 37.78825,
-//     longitude: -122.4324,
-//     latitudeDelta: 0.0922,
-//     longitudeDelta: 0.0421,
-//   }}
-// />
-// getInitialState(){
-//   return {
-//     region: {
-//       latitude: 37.78825,
-//       longitude: -122.4324,
-//       latitudeDelta: 0.0922,
-//       longitudeDelta: 0.0421,
-//     },
-//   };
-// }
-//
-// onRegionChange(region) {
-//   this.setState({ region });
-// }
-//
-// render() {
-//   return (
-//     <MapView
-//       region={this.state.region}
-//       onRegionChange={this.onRegionChange}
-//     />
-//   );
-// }
 
 const styles = StyleSheet.create({
   container: {
@@ -191,7 +61,6 @@ const styles = StyleSheet.create({
   },
   scroll: {
     marginHorizontal: 5,
-    // backgroundColor: ''
   },
   mapStyle: {
     minHeight: '100%',
