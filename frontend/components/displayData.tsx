@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Button, StyleSheet} from 'react-native';
-import data from '../fakeData.json';
+// import data from '../fakeData.json';
 import {Card, Text} from 'react-native-paper';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
@@ -13,6 +13,7 @@ function DisplayData(): JSX.Element {
     axios
       .get('http://127.0.0.1:8000/api/posts/')
       .then(res => {
+        console.log(res.status);
         setData({details: res.data});
       })
       .catch(err => {
